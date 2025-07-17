@@ -30,3 +30,23 @@ Machine Learning Pipeline: From Scratch to Production
 
 10. Monitoring & Maintenance
    - Monitor performance, retrain as needed, log predictions, handle data drift.
+
+
+# the dataset must not have multi collinear
+
+# VIF (Variance Inflation Factor) is a number that tells you if a feature (column) in your data is too similar to other features.
+# If VIF is high (usually above 5 or 10), it means that feature is highly related to others, which can confuse your model.
+# To use VIF:
+# 1. Calculate VIF for each feature.
+# 2. If a feature has a high VIF, consider removing it to make your model better.
+# Example (Python):
+# from statsmodels.stats.outliers_influence import variance_inflation_factor
+# import pandas as pd
+# vif_data = pd.DataFrame()
+# vif_data["feature"] = X.columns
+# vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+# print(vif_data)
+
+VIF is a number that tells you if a feature (column) in your data is too similar to other features.
+If VIF is high (usually above 5 or 10), it means that feature is highly related to others, which can confuse your model.
+To use VIF: calculate it for each feature, and if a feature has a high VIF, consider removing it to improve your model.
