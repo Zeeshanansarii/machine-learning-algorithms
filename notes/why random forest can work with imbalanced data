@@ -1,0 +1,42 @@
+Random Forest can work with imbalanced data because:
+
+1. **Bootstrap Sampling:** Each tree in the forest is trained on a random subset of the data (with replacement), so minority class samples have a chance to be included in multiple trees, increasing their influence.
+
+2. **Ensemble Averaging:** The final prediction is based on the majority vote (classification) or average (regression) across all trees, which can help reduce the bias toward the majority class.
+
+3. **Feature Randomness:** Random selection of features for splitting at each node can help the model find patterns relevant to the minority class.
+
+4. **Class Weights:** Random Forest in scikit-learn and other libraries allows setting `class_weight='balanced'`, which automatically adjusts weights inversely proportional to class frequencies, making the model pay more attention to the minority class.
+
+5. **Robustness:** Random Forest is less likely to overfit to the majority class compared to single decision trees, especially when combined with class weighting or sampling techniques.
+
+**Note:** For highly imbalanced datasets, additional techniques like resampling (SMOTE, undersampling) or adjusting class weights are still recommended for best results.
+
+
+**Technique Used:**
+
+The most common technique used with Random Forest for imbalanced data is setting the `class_weight` parameter to `'balanced'` or `'balanced_subsample'` in scikit-learn. This automatically adjusts the weights inversely proportional to class frequencies, so the model pays more attention to the minority class. Additionally, resampling methods (like SMOTE or undersampling) can be used before training to further address imbalance.
+
+
+**Example Syntax (scikit-learn):**
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+# Using class_weight='balanced'
+clf = RandomForestClassifier(class_weight='balanced', random_state=42)
+clf.fit(X_train, y_train)
+
+# Optionally, combine with resampling (e.g., SMOTE) before fitting
+```
+
+
+An artifacts folder is a directory used to store files generated during a machine learning or software project. These files, called "artifacts," can include:
+
+Trained model files (e.g., .pkl, .h5, .joblib)
+Preprocessing objects (e.g., scalers, encoders)
+Logs and reports
+Plots and visualizations
+Output data or predictions
+
+The artifacts folder helps organize and track important outputs from experiments, making it easier to reproduce results, deploy models, or share results with others.
